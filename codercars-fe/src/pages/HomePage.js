@@ -7,6 +7,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import ConfirmModal from '../components/ConfirmModal';
 import FormModal from '../components/FormModal';
 import AddIcon from '@mui/icons-material/Add';
+import DeleteSuccessModal from '../components/DeleteSuccessModal';
+import SuccessModal from '../components/SuccessModal';
 
 const HomePage = () => {
 	const [cars, setCars] = useState([]);
@@ -14,6 +16,8 @@ const HomePage = () => {
 	const [page, setPage] = useState(1);
 	const [openForm, setOpenForm] = useState(false);
 	const [openConfirm, setOpenConfirm] = useState(false);
+	const [openSuccess, setOpenSuccess] = useState(false);
+	const [openDeleteSuccess, setOpenDeleteSuccess] = useState(false);
 	const [selectedCar, setSelectedCar] = useState(null);
 	const [mode, setMode] = useState('create');
 
@@ -26,6 +30,14 @@ const HomePage = () => {
 		setSelectedCar(cars.find((car) => car._id === id));
 		setOpenForm(true);
 	};
+
+	const handleClickSuccess = () => {
+		setOpenSuccess(true)
+	}
+
+	const handleClickDeleteSuccess = () => {
+		setOpenDeleteSuccess(true)
+	}
 
 	const handleClickDelete = (id) => {
 		setOpenConfirm(true);
@@ -92,6 +104,7 @@ const HomePage = () => {
 					setOpenConfirm(false);
 				}}
 				action={handleDelete}
+				openDeleteSuccess={handleClickDeleteSuccess}
 			/>
 			<FormModal
 				open={openForm}
@@ -105,7 +118,23 @@ const HomePage = () => {
 					setOpenForm(false);
 					setSelectedCar(null);
 				}}
+				openSuccess={handleClickSuccess}
 				mode={mode}
+			/>
+			<SuccessModal
+				open={openSuccess}
+				selectedCar={selectedCar}
+				handleClose={() => {
+					setOpenSuccess(false);
+				}}
+				mode={mode}
+			/>
+			<DeleteSuccessModal
+				open={openDeleteSuccess}
+				name={name}
+				handleClose={() => {
+					setOpenDeleteSuccess(false);
+				}}
 			/>
 			<div style={{ height: 630, width: '100%' }}>
 				<DataGrid
