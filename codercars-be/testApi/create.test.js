@@ -1,20 +1,25 @@
 import app from "../app";
 import request from "supertest";
 import mongoose from "mongoose";
+import data from "./testData";
 
 beforeAll((done) => {
   done();
 });
 
 afterAll((done) => {
-  // Closing the DB connection allows Jest to exit successfully.
   mongoose.connection.close();
   done();
 });
 
 describe("Get all cars", () => {
-  test("should get all cars", async () => {
+  test("Verify status code 200 when successfully get all cars", async () => {
     const respond = await request(app).get("/");
+    expect(respond.statusCode).toBe(200);
+  });
+
+  test("Create new data", async () => {
+    const respond = await request(app).post("/").send(data.newCar[0]);
     expect(respond.statusCode).toBe(200);
   });
 });
