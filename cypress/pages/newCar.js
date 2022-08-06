@@ -3,10 +3,10 @@ export const dataCar = {
   txt_model: "input[name='model']",
   txt_price: "input[name='price']",
   txt_style: 'input[name="style"]',
-  txt_year: "[id=':r1l:']",
-  btt_column: "[id=':r1i:']",
-  btt_operator: "[id=':r1k:']",
-  txt_value: "[id=':r1n:']",
+  txt_year: "[id=':r1p:']",
+  btt_column: "[id=':r1m:']",
+  btt_operator: "[id=':r1o:']",
+  txt_value: "[id=':r1r:']",
 
   typeCarName(name) {
     cy.get(this.txt_name).type(name);

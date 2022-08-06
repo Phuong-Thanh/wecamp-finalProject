@@ -11,6 +11,8 @@
 //
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
+import { dataCar } from "../pages/newCar";
+
 Cypress.Commands.add("goToWeb", () => {
   cy.visit("http://localhost:3000/");
 });
@@ -68,6 +70,32 @@ Cypress.Commands.add("selectYear", () => {
   cy.get('[data-testid="CalendarIcon"]').click();
   cy.get(":nth-child(120) > .PrivatePickersYear-yearButton").click();
 });
+
+Cypress.Commands.add("generateNewCar", () => {
+  cy.newButton();
+  dataCar.typeCarName("Hyundai");
+  dataCar.typeCarModel("Santa Fei");
+  cy.selectTypeAutoManual();
+  cy.selectSizeLarge();
+  dataCar.typeCarStyle("Sedan");
+  dataCar.typeCarYear("2021");
+  dataCar.typeCarPrice("125000");
+  cy.createData();
+  cy.wait(2000);
+});
+
+Cypress.Commands.add("deleteCar", () => {
+  cy.get("[data-id]").invoke("data", "id").as("dataId");
+  cy.get("@dataId").then((dataId) => {
+    cy.log("dataId : ", dataId);
+    const newId = dataId;
+    cy.request({
+      method: "DELETE",
+      url: "http://localhost:5000/car/" + newId,
+    });
+  });
+});
+
 //
 //
 // -- This is a child command --
