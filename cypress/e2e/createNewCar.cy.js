@@ -1,22 +1,19 @@
 import { dataCar } from "../pages/newCar";
 
 describe("Verify new button functionality", () => {
+  it("Verify amount of row showed when successfully load page", () => {
+    cy.goToWeb();
+    cy.get(".MuiDataGrid-row").should("have.length", "10");
+  });
+
   it("Verify able to create new data with valid input", () => {
     cy.newButton();
-    dataCar.typeCarName("Hyundai");
-    dataCar.typeCarModel("Santa Fei");
-    cy.selectTypeAutoManual();
-    cy.selectSizeLarge();
-    dataCar.typeCarStyle("Sedan");
-    dataCar.typeCarYear("2021");
-    dataCar.typeCarPrice("125000");
-    cy.createData();
-    cy.wait(2000);
+    cy.generateNewCar();
     cy.get("[id='success-dialog-title']").should("have.text", "CREATE SUCCESS");
     cy.deleteCar();
   });
 
-  it("Verify able to create new data with special character name input", () => {
+  it("Verify able to create new data with special character for input field", () => {
     cy.newButton();
     dataCar.typeCarName("********");
     dataCar.typeCarModel("*&& aaadddd444555");
@@ -120,7 +117,7 @@ describe("Verify new button functionality", () => {
     );
   });
 
-  it("Verify warning message when create new data with min input", () => {
+  it("Verify warning message when create new data with min year input", () => {
     cy.newButton();
     dataCar.typeCarPrice("89");
     cy.createData();
@@ -131,7 +128,7 @@ describe("Verify new button functionality", () => {
     );
   });
 
-  it("Verify warning message when create new data with max input", () => {
+  it("Verify warning message when create new data with max price input", () => {
     cy.newButton();
     dataCar.typeCarPrice("10000000000000000000000000000000000000");
     cy.createData();

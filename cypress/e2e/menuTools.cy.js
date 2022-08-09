@@ -1,7 +1,7 @@
 import { dataCar } from "../pages/newCar";
 
 describe("Verify menu tools functionality", () => {
-  it("Sorted by desc", () => {
+  it("Successfully sorted by descending", () => {
     cy.goToWeb();
     cy.wait(3000);
     cy.get("button[id=':r13:']").click({ force: true });
@@ -9,7 +9,7 @@ describe("Verify menu tools functionality", () => {
     cy.get('[data-testid="ArrowDownwardIcon"] > path').should("be.visible");
   });
 
-  it("Sorted by asc", () => {
+  it("Successfully sorted by ascending", () => {
     cy.goToWeb();
     cy.wait(3000);
     cy.get("button[id=':r13:']").click({ force: true });
@@ -17,7 +17,7 @@ describe("Verify menu tools functionality", () => {
     cy.get('[data-testid="ArrowUpwardIcon"] > path').should("be.visible");
   });
 
-  it("Filtered with valid input", () => {
+  it("Successfully filtered with valid input", () => {
     cy.goToWeb();
     cy.get("button[id=':r13:']").click({ force: true });
     cy.get("div[role='tooltip'] li:nth-child(4)").click();
@@ -27,7 +27,7 @@ describe("Verify menu tools functionality", () => {
     cy.get(".MuiDataGrid-root").should("contain", "Chrysler");
   });
 
-  it("Filtered with valid input - lowercase", () => {
+  it("Successfully filtered with valid input - lowercase", () => {
     cy.goToWeb();
     cy.get("button[id=':r13:']").click({ force: true });
     cy.get("div[role='tooltip'] li:nth-child(4)").click();
@@ -37,7 +37,7 @@ describe("Verify menu tools functionality", () => {
     cy.get(".MuiDataGrid-root").should("contain", "Chrysler");
   });
 
-  it("Filtered with valid input and spare character for selected field", () => {
+  it("Successfully filtered with valid input and spare character for selected field", () => {
     cy.goToWeb();
     cy.get("button[id=':r13:']").click({ force: true });
     cy.get("div[role='tooltip'] li:nth-child(4)").click();
@@ -48,7 +48,7 @@ describe("Verify menu tools functionality", () => {
     cy.get(".MuiDataGrid-root").should("contain", "Chrysler");
   });
 
-  it("Filtered with minimum character for input Name field", () => {
+  it("Successfully filtered with minimum character for input Name field", () => {
     cy.goToWeb();
     cy.get("button[id=':r13:']").click({ force: true });
     cy.get("div[role='tooltip'] li:nth-child(4)").click();
@@ -59,7 +59,7 @@ describe("Verify menu tools functionality", () => {
     cy.get(".MuiDataGrid-root").should("contain", "FIAT 124 Spider");
   });
 
-  it("Filtered with minimum character for input Price field", () => {
+  it("Successfully filtered with minimum character for input Price field", () => {
     cy.goToWeb();
     cy.get("button[id=':r13:']").click({ force: true });
     cy.get("div[role='tooltip'] li:nth-child(4)").click();
@@ -70,7 +70,7 @@ describe("Verify menu tools functionality", () => {
     cy.get(".MuiDataGrid-root").should("contain", "51050");
   });
 
-  it("Filtered with invalid input", () => {
+  it("Verify message when filter with invalid input", () => {
     cy.goToWeb();
     cy.get("button[id=':r13:']").click({ force: true });
     cy.get("div[role='tooltip'] li:nth-child(4)").click();
@@ -80,7 +80,7 @@ describe("Verify menu tools functionality", () => {
     cy.get(".MuiDataGrid-root").should("contain", "No results found.");
   });
 
-  it("Verify message No results when filtered for empty field", () => {
+  it("Verify message No results when filtered with empty field", () => {
     cy.goToWeb();
     cy.get("button[id=':r13:']").click({ force: true });
     cy.get("div[role='tooltip'] li:nth-child(4)").click();
@@ -89,7 +89,7 @@ describe("Verify menu tools functionality", () => {
     cy.get(".MuiDataGrid-root").should("contain", "No results found.");
   });
 
-  it("Hide column", () => {
+  it("Successfully hide column", () => {
     cy.goToWeb();
     cy.get("button[id=':r13:']").click({ force: true });
     cy.get("div[role='tooltip'] li:nth-child(5)").click();
@@ -97,7 +97,7 @@ describe("Verify menu tools functionality", () => {
     cy.get("button[id=':r13:']").should("not.exist");
   });
 
-  it("Show column", () => {
+  it("Successfully show column", () => {
     cy.goToWeb();
     cy.get("button[id=':r13:']").click({ force: true });
     cy.get("div[role='tooltip'] li:nth-child(5)").click();
@@ -108,7 +108,7 @@ describe("Verify menu tools functionality", () => {
     cy.get('[data-field="price"]').should("exist");
   });
 
-  it("Hide all and Show all column", () => {
+  it("Successfully hide all and Show all column", () => {
     cy.goToWeb();
     cy.get("button[id=':r13:']").click({ force: true });
     cy.get("div[role='tooltip'] li:nth-child(6)").click();
@@ -118,7 +118,7 @@ describe("Verify menu tools functionality", () => {
     cy.get('[data-field="name"]').should("be.exist");
   });
 
-  it("Switch page by button", () => {
+  it("Successfully switch page by button", () => {
     cy.goToWeb();
     cy.wait(1000);
     cy.xpath(`//button[contains(.,'3')]`).click({ force: true });
@@ -127,12 +127,13 @@ describe("Verify menu tools functionality", () => {
     ).should("have.css", "background-color", "rgb(0, 171, 85)");
   });
 
-  it("Switch page by arrow", () => {
+  it("Successfully switch page by arrow", () => {
     cy.goToWeb();
     cy.wait(1000);
     cy.get('[data-testid="NavigateNextIcon"]')
       .should("be.visible")
       .click({ force: true });
+    cy.wait(1000);
     cy.get("[aria-label='page 2']").should(
       "have.css",
       "background-color",

@@ -1,0 +1,13 @@
+{
+  "newCar": [
+    {
+      "make": "BMW testing",
+      "model": "LUX",
+      "release_date": 2013,
+      "transmission_type": "MANUAL",
+      "size": "Compact",
+      "style": "Coupe",
+      "price": 768644
+    }
+  ]
+}

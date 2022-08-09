@@ -96,6 +96,13 @@ Cypress.Commands.add("deleteCar", () => {
   });
 });
 
+Cypress.Commands.add("editCar", () => {
+  cy.goToWeb();
+  cy.get(
+    ".MuiDataGrid-row--lastVisible > .MuiDataGrid-cell--withRenderer > .css-w4z10b-MuiStack-root > :nth-child(1)"
+  ).click();
+});
+
 //
 //
 // -- This is a child command --
