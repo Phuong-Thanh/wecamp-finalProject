@@ -1,8 +1,8 @@
 export const data = {
   newCar: [
     {
-      make: "Mock Car",
-      model: "Fake",
+      make: "BMW",
+      model: "Lux",
       release_date: 2013,
       transmission_type: "MANUAL",
       size: "Compact",
@@ -46,7 +46,7 @@ export const data = {
       price: 768644,
     },
     {
-      make: "BMW 5",
+      make: "BMW fail",
       model: "LUX",
       release_date: "2100",
       transmission_type: "MANUAL",
@@ -64,7 +64,7 @@ export const data = {
       price: 768644,
     },
     {
-      make: "BMW 7",
+      make: "BMW fail",
       model: "LUX",
       release_date: "1999.9",
       transmission_type: "MANUAL",
@@ -73,7 +73,7 @@ export const data = {
       price: 768644,
     },
     {
-      make: "BMW 8",
+      make: "BMW fail",
       model: "LUX",
       release_date: "2019",
       transmission_type: "MANUAL",
@@ -82,7 +82,7 @@ export const data = {
       price: "89",
     },
     {
-      make: "BMW 9",
+      make: "BMW fail",
       model: "LUX",
       release_date: 2013,
       transmission_type: "MANUAL",
@@ -91,7 +91,7 @@ export const data = {
       price: "100000000000000000000000000000092300",
     },
     {
-      make: "BMW 10",
+      make: "BMW fail",
       model: "LUX",
       release_date: "2019",
       transmission_type: "MANUAL",

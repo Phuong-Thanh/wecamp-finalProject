@@ -22,7 +22,10 @@ describe("Verify edit button functionality", () => {
   });
 
   it("Verify error message when edit existed car with with empty Make input", () => {
-    cy.editCar();
+    cy.goToWeb();
+    cy.get(
+      ".MuiDataGrid-row:nth-child(3) .MuiButtonBase-root:nth-child(1) path"
+    ).click();
     cy.get("input[name='make']").clear();
     cy.createData();
     cy.get('[id=":r1j:-helper-text"]').should(
@@ -31,7 +34,10 @@ describe("Verify edit button functionality", () => {
     );
   });
   it("Verify error message when edit existed car with empty Model field", () => {
-    cy.editCar();
+    cy.goToWeb();
+    cy.get(
+      ".MuiDataGrid-row:nth-child(3) .MuiButtonBase-root:nth-child(1) path"
+    ).click();
     cy.get("input[name='model']").clear();
     cy.createData();
     cy.get('[id=":r1l:-helper-text"]').should(
@@ -41,7 +47,10 @@ describe("Verify edit button functionality", () => {
   });
 
   it("Verify error message when edit existed car with empty Style field", () => {
-    cy.editCar();
+    cy.goToWeb();
+    cy.get(
+      ".MuiDataGrid-row:nth-child(3) .MuiButtonBase-root:nth-child(1) path"
+    ).click();
     cy.get("input[name='style']").clear();
     cy.createData();
     cy.get('[id=":r1n:-helper-text"]').should(
@@ -51,7 +60,10 @@ describe("Verify edit button functionality", () => {
   });
 
   it("Verify error message when edit existed car with empty Release_date field", () => {
-    cy.editCar();
+    cy.goToWeb();
+    cy.get(
+      ".MuiDataGrid-row:nth-child(3) .MuiButtonBase-root:nth-child(1) path"
+    ).click();
     cy.get("[id=':r1p:']").clear();
     cy.createData();
     cy.get('[id=":r1p:-helper-text"]').should(
@@ -61,7 +73,10 @@ describe("Verify edit button functionality", () => {
   });
 
   it("Verify error message when edit existed car with empty Price field", () => {
-    cy.editCar();
+    cy.goToWeb();
+    cy.get(
+      ".MuiDataGrid-row:nth-child(3) .MuiButtonBase-root:nth-child(1) path"
+    ).click();
     cy.get("input[name='price']").clear();
     cy.createData();
     cy.get('[id=":r1r:-helper-text"]').should(
