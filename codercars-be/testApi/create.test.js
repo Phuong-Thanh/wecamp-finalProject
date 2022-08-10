@@ -1,9 +1,8 @@
 import app from "../app";
 import request from "supertest";
 import mongoose from "mongoose";
-import { data } from "./testCreateData";
+import { data } from "./createData";
 import Car from "../models/Car";
-import { editCar } from "../controllers/car.controller";
 
 let latestData = Car.find().hint({ $natural: -1 }).limit(1);
 
@@ -11,13 +10,13 @@ beforeAll((done) => {
   done();
 });
 
+afterEach(() => {
+  return Car.deleteMany({ make: "BMW fail" }, {});
+});
+
 afterAll((done) => {
   mongoose.connection.close();
   done();
-});
-
-afterEach(() => {
-  return Car.deleteMany({ make: "BMW fail" }, {});
 });
 
 describe("Get all cars", () => {
